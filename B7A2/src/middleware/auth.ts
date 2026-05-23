@@ -4,7 +4,7 @@ import sendResponse from "../utility/sendResponse";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import properties from "../config/properties";
 import { pool } from "../db/init";
-import type { User } from "../modules/user/user.interface";
+import type { User } from "../modules/user/user.intreface";
 
 const auth = (...roles: UserRole[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {

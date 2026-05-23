@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
 import { pool } from "../../db/init";
+import type { User } from "../user/user.intreface";
+import type { loginPayload, registerPayload } from "./auth.interface";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import properties from "../../config/properties";
-import type { loginPayload, registerPayload } from "./auth.interface";
-import type { User } from "../user/user.interface";
 
 const registerHandler = async (payload: registerPayload): Promise<User> => {
   const { name, email, password, role } = payload;

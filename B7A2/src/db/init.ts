@@ -15,7 +15,7 @@ export const initDb = async () => {
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(256) NOT NULL,  
 
-            role VARCHAR(100) DEFAULT 'contributor',
+            role VARCHAR(100) DEFAULT 'CONTRIBUTOR',
 
             created_at TIMESTAMP DEFAULT NOW(),
             updated_at TIMESTAMP DEFAULT NOW()
@@ -25,7 +25,6 @@ export const initDb = async () => {
     await pool.query(`
         CREATE TABLE IF NOT EXISTS issues(
             id SERIAL PRIMARY KEY,
-            reporter_id INT REFERENCES users(id) ON DELETE CASCADE,
 
             title VARCHAR(150) NOT NULL,
             description TEXT NOT NULL,
@@ -33,6 +32,7 @@ export const initDb = async () => {
             type VARCHAR(50) NOT NULL,
             status VARCHAR(100) DEFAULT 'open',
 
+            reporter_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
             created_at TIMESTAMP DEFAULT NOW(),
             updated_at TIMESTAMP DEFAULT NOW()
         )
